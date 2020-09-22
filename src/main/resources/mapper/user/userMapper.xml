@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.react.admin.mapper.UserMapper" >
+
+    <sql id="Base_Column_sql">
+        `id`, `nick_name`, `account_no`, `password`, `status`, `create_time`, `create_user`, `update_time`, `update_user`
+    </sql>
+    
+    <select id="findUserByAccountNoAndPassword" resultType="com.react.admin.entity.User">
+        select
+        <include refid="Base_Column_sql"/>
+        from `t_user`
+        where `account_no` = #{accountNo, jdbcType=VARCHAR}
+          and `password` = #{password, jdbcType=VARCHAR}
+    </select>
+    
+</mapper>

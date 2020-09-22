@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: react-admin-server
+  # DB basic configuration
+  datasource:
+    url: jdbc:mysql://localhost:3306/react_db?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 111111
+    # The 6.x version of the MySQL JDBC driver class is com.mysql.cj.jdbc.Driver
+    # The 5.x version of the MySQL JDBC driver class is com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 配置日志输出
+logging:
+  config: classpath:log4j2/log4j2.xml
+  level:
+    cn.jay.repository: trace
+
+mybatis:
+  mapper-locations: classpath:mapper/*/*.xml
+  type-aliases-package: com.react.admin.entity
+  configuration:
+    map-underscore-to-camel-case: true
