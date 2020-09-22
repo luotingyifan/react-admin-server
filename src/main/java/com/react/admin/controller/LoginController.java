@@ -1,10 +1,10 @@
 package com.react.admin.controller;
 
 import com.react.admin.entity.User;
+import com.react.admin.model.ResultEntity;
 import com.react.admin.service.LoginService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,9 +30,9 @@ public class LoginController {
      * @return
      */
     @PostMapping(value = "/token")
-    public ResponseEntity token(String accountNo, String password) {
+    public ResultEntity token(String accountNo, String password) {
         log.info("用户登录token, accountNo={}, password={}", accountNo, password);
         User user = loginService.token(accountNo, password);
-        return ResponseEntity.ok(user);
+        return ResultEntity.ok(user);
     }
 }
